@@ -5,19 +5,13 @@ import {
   Text,
   Flex,
   Button,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalFooter,
-  ModalBody,
   Box,
   SimpleGrid,
   Divider,
   Wrap,
 } from "@chakra-ui/react";
 import { Tag } from "../components/ui/RecipeItemTag.jsx";
+import { NutrientList } from "../components/NutrientList.jsx";
 
 export const RecipePage = ({ recipe, clickFn }) => {
   return (
@@ -26,18 +20,24 @@ export const RecipePage = ({ recipe, clickFn }) => {
         bgColor="white"
         minHeight="100vh"
         borderRadius="sm"
-        w={["sm", "sm", "3xl", "4xl", "5xl"]}
+        w={["base", "xl", "2xl", "3xl", "3xl"]}
       >
-        <Box height="4em"></Box>
+        <Box height="5em" padding={5}>
+          <Flex>
+            <Button onClick={() => clickFn()} variant="ghost" fontWeight="Bold">
+              Back
+            </Button>
+          </Flex>
+        </Box>
         <Image
           src={recipe.recipe.image}
-          w={["sm", "sm", "3xl", "4xl", "5xl"]}
+          w={["base", "xl", "2xl", "3xl", "3xl"]}
           h="25em"
           borderRadius={"sm"}
           marginBottom="1em"
           objectFit="cover"
         ></Image>
-        <SimpleGrid margin="2em" spacing="8em" columns={[1, 1, 2]}>
+        <SimpleGrid margin="2em" spacing="8em" columns={[1, 1, 2, 2, 2, 2]}>
           {/* Start of left box */}
           <Box>
             <Flex paddingBottom="1">
@@ -53,7 +53,7 @@ export const RecipePage = ({ recipe, clickFn }) => {
               ))}
             </Flex>
 
-            <Heading justify="center" fontSize={"xl"}>
+            <Heading justify="center" fontSize={"2xl"}>
               {recipe.recipe.label}
             </Heading>
             <Divider margin="2"></Divider>
@@ -63,8 +63,8 @@ export const RecipePage = ({ recipe, clickFn }) => {
             <Text fontSize="xl">Ingredients:</Text>
             <Box justify="left">
               {recipe.recipe.ingredientLines.map((ing) => (
-                <Text key={ing} variant="solid">
-                  - {ing}
+                <Text key={ing} variant="solid" lineHeight="2em">
+                  {ing}
                 </Text>
               ))}
             </Box>
@@ -79,21 +79,43 @@ export const RecipePage = ({ recipe, clickFn }) => {
             >
               Healthlabels:
             </Text>
-            <Wrap justify="left" gap={2}>
+            <Wrap justify="left">
               {recipe.recipe.healthLabels.map((dietLabels) => (
                 <Tag key={dietLabels} variant="solid" bgColor="blue.200">
                   {dietLabels}
                 </Tag>
               ))}
             </Wrap>
+            <Text h="1em"></Text>
+            <Text marginBottom="5px" fontSize="0.9em" color="grey">
+              Cautions:
+            </Text>
+            <Wrap justify="left" gap={2}>
+              {recipe.recipe.cautions.map((caution) => (
+                <Tag key={caution} variant="solid" bgColor="red.200">
+                  {caution}
+                </Tag>
+              ))}
+            </Wrap>
+            <Text h="1em"></Text>
+            <Text marginBottom="5px" fontSize="0.9em" color="grey">
+              Diet:
+            </Text>
+            <Wrap justify="left">
+              {recipe.recipe.dietLabels.map((diet) => (
+                <Tag key={diet} variant="solid" bgColor="green.200">
+                  {diet}
+                </Tag>
+              ))}
+            </Wrap>
+            <Text h="1em"></Text>
+            <Text fontSize="xl">Total Nutrients:</Text>
+            <Text h="1em"></Text>
+            <NutrientList
+              nutrients={recipe.recipe.totalNutrients}
+            ></NutrientList>
           </Box>
         </SimpleGrid>
-        <Flex mt={4}>
-          <Button mr={4}>Confirm order</Button>
-          <Button onClick={() => clickFn()} variant="ghost">
-            Change selection
-          </Button>
-        </Flex>
       </Box>
     </Center>
   );

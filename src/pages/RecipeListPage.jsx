@@ -30,7 +30,7 @@ export const RecipeListPage = ({ clickFn }) => {
   return (
     <Center minHeight="100vh" flexDir="column" bgColor="yellow.400" gap={8}>
       <Heading padding={4} marginTop={4}>
-        Your Recipe App
+        Recipe Finder
       </Heading>
       <TextInput
         w="50%"
