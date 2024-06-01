@@ -33,9 +33,10 @@ export const RecipeListPage = ({ clickFn }) => {
         Recipe Finder
       </Heading>
       <TextInput
-        w="50%"
+        w={["80%", "xl", "2xl"]}
         changeFn={handleChange}
-        placeholder="Let's see if we have it! results given based on Name, Healthlabel (eg. vegan) and/or Mealtype"
+        placeholder="Let's see if we have it!"
+        textAlign="center"
       ></TextInput>
       <RecipeList
         clickFn={clickFn}

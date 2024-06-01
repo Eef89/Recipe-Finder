@@ -20,7 +20,7 @@ export const RecipePage = ({ recipe, clickFn }) => {
         bgColor="white"
         minHeight="100vh"
         borderRadius="sm"
-        w={["base", "xl", "2xl", "3xl", "3xl"]}
+        w={["100%", "2xl", "3xl", "3xl", "3xl"]}
       >
         <Box height="5em" padding={5}>
           <Flex>
@@ -31,7 +31,7 @@ export const RecipePage = ({ recipe, clickFn }) => {
         </Box>
         <Image
           src={recipe.recipe.image}
-          w={["base", "xl", "2xl", "3xl", "3xl"]}
+          w={["100%", "2xl", "3xl", "3xl", "3xl"]}
           h="25em"
           borderRadius={"sm"}
           marginBottom="1em"
