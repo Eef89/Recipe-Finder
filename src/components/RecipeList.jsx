@@ -8,7 +8,7 @@ export const RecipeList = ({ recipes, clickFn, ...props }) => {
   return (
     <Wrap spacing={8} justify="center" {...props}>
       {recipes.map((item) => (
-        <GridItem key={item}>
+        <GridItem key={item.recipe.label}>
           <RecipeItemCard
             clickFn={clickFn}
             recipe={item}
