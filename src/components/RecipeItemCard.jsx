@@ -17,19 +17,15 @@ export const RecipeItemCard = ({ recipe, clickFn }) => {
     (item) => item === "Vegan" || item === "Vegetarian"
   );
 
-  const scrollTop = () => {
-    window.scrollTo({ top: 0 });
-  };
-
   return (
     <Card
+      onClick={() => {
+        clickFn(recipe);
+        window.scrollTo({ top: 0 });
+      }}
       variant="filled"
       maxW="sm"
       cursor="pointer"
-      onClick={() => {
-        clickFn(recipe);
-        scrollTop();
-      }}
       h="30em"
       _hover={{ transform: "scale(1.02)" }}
       bgColor="white"
