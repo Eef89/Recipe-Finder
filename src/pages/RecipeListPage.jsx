@@ -27,6 +27,10 @@ export const RecipeListPage = ({ clickFn }) => {
     );
   });
 
+  const scrollTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <Center minHeight="100vh" flexDir="column" bgColor="yellow.400" gap={8}>
       <Heading padding={4} marginTop={4}>
